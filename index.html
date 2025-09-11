@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Saya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url("background.jpg") no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden; /* cegah geser kanan */
+    }
+
+    /* ====== NAVBAR ====== */
+    nav {
+      width: 100%;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-radius: 0 0 15px 15px;
+    }
+
+    nav h2 {
+      color: #2c3e50;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin-left: 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2c3e50;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #4ecb71;
+    }
+
+    /* ====== CONTAINER ====== */
+    .container {
+      margin-top: 120px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .text {
+      flex: 1;
+      min-width: 250px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .text h1 {
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+
+    .text h1 span {
+      color: #4ecb71;
+    }
+
+    .text p {
+      font-size: 1rem;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .socials {
+      margin-top: 15px;
+    }
+
+    .socials a {
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      color: #4ecb71;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .socials a:hover {
+      transform: scale(1.2);
+      color: #ffe066;
+    }
+
+    .photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(78,203,113,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin: 20px auto;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+    }
+
+    .photo img {
+      width: 95%;
+      border-radius: 50%;
+      transition: transform 0.4s;
+    }
+
+    .photo img:hover {
+      transform: scale(1.05);
+    }
+
+    /* dekorasi lingkaran transparan */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(78,203,113,0.15);
+      animation: float 6s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    .circle.one {
+      width: 100px; height: 100px;
+      top: 20px; right: 20px;
+    }
+
+    .circle.two {
+      width: 80px; height: 80px;
+      bottom: 20px; left: 20px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* ====== FORM KONTAK ====== */
+    .contact {
+      margin: 40px auto;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .contact h2 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .contact form input,
+    .contact form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      background: rgba(255,255,255,0.7);
+      font-size: 1rem;
+    }
+
+    .contact form button {
+      background: #4ecb71;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .contact form button:hover {
+      background: #3aa85a;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <h2>Hi, selamat datang di dashboard saya</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="container" id="home">
+    <div class="text">
+      <h1>Hi, Saya <span>M. Hafidz Falih Ramadhan</span></h1>
+      <p>Mahasiswa Rekam medis dan informasi kesehatan <br> Politeknik kesehatan Tasikmalaya</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/hafidzfalih_?igsh=NG80aDQxNHc0NWVn" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@falllyourbae?_t=ZS-8zdW53QeMEC&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+         <a href="https://www.youtube.com/@hafidzfalih" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="photo">
+      <img src="fotomu.jpg" alt="Foto Profil">
+    </div>
+    <div class="circle one"></div>
+    <div class="circle two"></div>
+  </div>
+
+  <!-- FORM KONTAK -->
+  <div class="contact" id="contact">
+    <h2>Hubungi Saya</h2>
+    <form action="https://formspree.io/f/xvgbljbb" method="POST">
+      <input type="text" name="nama" placeholder="Nama Kamu" required>
+      <input type="email" name="email" placeholder="Email Kamu" required>
+      <textarea name="pesan" rows="5" placeholder="Tulis pesan..." required></textarea>
+      <button type="submit">Kirim Pesan</button>
+    </form>
+  </div>
+</body>
+</html>

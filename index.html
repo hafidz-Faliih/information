@@ -37,8 +37,14 @@
     nav h2 { color: #2c3e50; font-weight: 700; }
     .toggle-mode { flex: 1; display: flex; justify-content: center; }
     .toggle-btn {
-      font-size: 1.3rem; background: #4ecb71; color: #fff; border: none; padding: 8px 16px;
-      border-radius: 25px; cursor: pointer; transition: transform 0.3s, background 0.3s;
+      font-size: 1rem;                /* ✅ lebih kecil */
+      background: #4ecb71; 
+      color: #fff; 
+      border: none; 
+      padding: 6px 10px;              /* ✅ lebih ramping */
+      border-radius: 25px; 
+      cursor: pointer; 
+      transition: transform 0.3s, background 0.3s;
     }
     .toggle-btn:hover { transform: scale(1.1); background: #3aa85a; }
     nav ul { display: flex; list-style: none; }
@@ -125,10 +131,14 @@
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
-      nav { flex-direction: column; padding: 10px; }
-      nav h2 { margin-bottom: 8px; font-size: 1.2rem; }
-      nav ul { margin-top: 5px; }
-      nav ul li { margin: 0 10px; }
+      nav { 
+        flex-direction: column; 
+        padding: 12px 15px;            /* ✅ lebih lega di HP */
+      }
+      nav h2 { margin-bottom: 6px; font-size: 1.1rem; }
+      nav ul { margin-top: 4px; flex-wrap: wrap; justify-content: center; }
+      nav ul li { margin: 4px 8px; }
+      nav ul li a { font-size: 0.9rem; }
 
       .container, .about { flex-direction: column; text-align: center; padding: 20px; }
       .text h1 { font-size: 1.5rem; }
@@ -140,11 +150,14 @@
 
     @media (max-width: 480px) {
       nav h2 { font-size: 1rem; }
-      nav ul li a { font-size: 0.9rem; }
+      nav ul li a { font-size: 0.85rem; }
+      .toggle-btn {
+        font-size: 0.9rem;             /* ✅ lebih kecil lagi di HP */
+        padding: 5px 8px;
+      }
 
       .text h1 { font-size: 1.2rem; line-height: 1.4; }
       .text p { font-size: 0.8rem; }
-
       .socials a { font-size: 1.1rem; }
       .photo { width: 150px; height: 150px; }
     }

@@ -55,16 +55,17 @@
       background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
       border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.25);
       display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
-      padding: 40px;
+      padding: 40px; animation: fadeSlideUp 1s ease forwards;
     }
+    @keyframes fadeSlideUp { from {opacity:0; transform:translateY(50px);} to { opacity:1; transform: translateY(0); } }
 
     .text { flex: 1; min-width: 250px; }
     .text h1 { font-size: 2.2rem; color: #2c3e50; }
     .text h1 span { color: #4ecb71; }
     .text p { font-size: 1rem; margin-top: 10px; color: #333; }
-    .socials { margin-top: 20px; }
+    .socials { margin-top: 20px; display:flex; gap:15px; }
     .socials a {
-      margin-right: 12px; font-size: 1.6rem; color: #4ecb71;
+      font-size: 1.6rem; color: #4ecb71;
       transition: transform 0.6s ease, color 0.3s;
     }
     .socials a:hover { transform: rotate(360deg) scale(1.2); color: #ffe066; }
@@ -124,24 +125,28 @@
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
-      nav { flex-wrap: wrap; justify-content: center; }
-      .container, .about { flex-direction: column; text-align: center; }
-      .socials { text-align: center; }
-    }
-    @media (max-width: 480px) {
-      .text h1 { font-size: 1.6rem; }
-      .photo { width: 180px; height: 180px; }
+      nav { flex-direction: column; padding: 10px; }
+      nav h2 { margin-bottom: 8px; font-size: 1.2rem; }
+      nav ul { margin-top: 5px; }
+      nav ul li { margin: 0 10px; }
+
+      .container, .about { flex-direction: column; text-align: center; padding: 20px; }
+      .text h1 { font-size: 1.5rem; }
+      .text p { font-size: 0.9rem; }
+      .socials { justify-content: center; margin-top: 12px; }
+      .socials a { font-size: 1.3rem; }
+      .photo { width: 180px; height: 180px; margin-top: 15px; }
     }
 
-    /* ====== ANIMASI SCROLL ====== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(60px);
-      transition: all 1s ease;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 480px) {
+      nav h2 { font-size: 1rem; }
+      nav ul li a { font-size: 0.9rem; }
+
+      .text h1 { font-size: 1.2rem; line-height: 1.4; }
+      .text p { font-size: 0.8rem; }
+
+      .socials a { font-size: 1.1rem; }
+      .photo { width: 150px; height: 150px; }
     }
   </style>
 </head>
@@ -158,7 +163,7 @@
   </nav>
 
   <!-- HERO -->
-  <div class="container reveal" id="home">
+  <div class="container" id="home">
     <div class="text">
       <h1>Hi, Saya <span>M. Hafidz Falih Ramadhan</span></h1>
       <p>Mahasiswa Rekam Medis dan Informasi Kesehatan <br> Politeknik Kesehatan Tasikmalaya</p>
@@ -172,7 +177,7 @@
   </div>
 
   <!-- ABOUT -->
-  <div class="about reveal" id="about">
+  <div class="about" id="about">
     <img src="about me.jpg" alt="Foto About Me">
     <div class="about-text">
       <h2>About Me</h2>
@@ -183,7 +188,7 @@
   </div>
 
   <!-- CONTACT -->
-  <div class="contact reveal" id="contact">
+  <div class="contact" id="contact">
     <h2>Hubungi Saya</h2>
     <form action="https://formspree.io/f/xvgbljbb" method="POST">
       <input type="text" name="nama" placeholder="Nama Kamu" required>
@@ -201,21 +206,6 @@
       document.querySelector('.toggle-btn').textContent =
         body.classList.contains('dark') ? '🌙' : '☀️';
     }
-
-    // Animasi Scroll
-    const reveals = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-          observer.unobserve(entry.target); // animasi sekali saja
-        }
-      });
-    }, { threshold: 0.2 });
-
-    reveals.forEach((reveal) => {
-      observer.observe(reveal);
-    });
   </script>
 </body>
 </html>

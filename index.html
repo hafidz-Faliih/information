@@ -8,334 +8,140 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
 
     /* ====== DARK & LIGHT MODE ====== */
     body.dark {
       background: url("background1.png") no-repeat center center/cover;
       color: #fff;
+      transition: all 0.5s ease;
     }
-
     body.light {
       background: url("background2.jpg") no-repeat center center/cover;
       color: #222;
+      transition: all 0.5s ease;
     }
-
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      min-height: 100vh; display: flex; flex-direction: column; align-items: center;
       overflow-x: hidden;
-      transition: background 0.5s, color 0.5s;
     }
 
     /* ====== NAVBAR ====== */
     nav {
-      width: 100%;
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 1000;
-      border-radius: 0 0 15px 15px;
+      width: 100%; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center;
+      position: fixed; top: 0; left: 0;
+      background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
+      z-index: 1000; border-radius: 0 0 15px 15px;
     }
-
-    nav h2 {
-      color: #2c3e50;
-      font-weight: 700;
-    }
-
-    .toggle-mode {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
-
+    nav h2 { color: #2c3e50; font-weight: 700; }
+    .toggle-mode { flex: 1; display: flex; justify-content: center; }
     .toggle-btn {
-      font-size: 1.3rem;
-      background: #4ecb71;
-      color: #fff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
+      font-size: 1.3rem; background: #4ecb71; color: #fff; border: none; padding: 8px 16px;
+      border-radius: 25px; cursor: pointer; transition: transform 0.3s, background 0.3s;
     }
-
-    .toggle-btn:hover {
-      transform: scale(1.1);
-      background: #3aa85a;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-    }
-
-    nav ul li {
-      margin-left: 20px;
-    }
-
+    .toggle-btn:hover { transform: scale(1.1); background: #3aa85a; }
+    nav ul { display: flex; list-style: none; }
+    nav ul li { margin-left: 20px; }
     nav ul li a {
-      text-decoration: none;
-      font-weight: 600;
-      color: #2c3e50;
-      transition: color 0.3s;
+      text-decoration: none; font-weight: 600; color: #2c3e50; transition: color 0.3s;
     }
-
-    nav ul li a:hover {
-      color: #4ecb71;
-    }
+    nav ul li a:hover { color: #4ecb71; }
 
     /* ====== CONTAINER (HOME) ====== */
     .container {
       margin-top: 120px;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      width: 80%;
-      max-width: 1000px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-      display: flex;
-      align-items: center;
+      width: 80%; max-width: 1000px;
+      background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
+      border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
       padding: 40px;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeSlideUp 1s ease forwards;
     }
 
-    @keyframes fadeSlideUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .text {
-      flex: 1;
-      padding-right: 30px;
-    }
-
-    .text h1 {
-      font-size: 2.5rem;
-      color: #2c3e50;
-      animation: slideIn 1.2s ease;
-    }
-
-    .text h1 span {
-      color: #4ecb71;
-    }
-
-    .text p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      color: #333;
-      animation: slideIn 1.5s ease;
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    .socials {
-      margin-top: 20px;
-      text-align: left; /* rata kiri */
-      animation: fadeSlideUp 1.3s ease forwards;
-    }
-
+    .text { flex: 1; min-width: 250px; }
+    .text h1 { font-size: 2.2rem; color: #2c3e50; }
+    .text h1 span { color: #4ecb71; }
+    .text p { font-size: 1rem; margin-top: 10px; color: #333; }
+    .socials { margin-top: 20px; }
     .socials a {
-      text-decoration: none;
-      margin: 0 10px 0 0;
-      font-size: 1.8rem;
-      color: #4ecb71;
-      display: inline-block;
+      margin-right: 12px; font-size: 1.6rem; color: #4ecb71;
       transition: transform 0.6s ease, color 0.3s;
     }
-
-    .socials a:hover {
-      transform: rotate(360deg) scale(1.2);
-      color: #ffe066;
-    }
+    .socials a:hover { transform: rotate(360deg) scale(1.2); color: #ffe066; }
 
     .photo {
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: rgba(78,203,113,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      animation: zoomIn 1s ease-in-out;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.25);
-      border: 3px solid transparent; /* border default */
-      transition: border 0.3s;
+      width: 260px; height: 260px; border-radius: 50%;
+      background: rgba(78,203,113,0.8); display: flex; justify-content: center; align-items: center;
+      overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+      border: 3px solid transparent;
     }
-
-    .photo img {
-      width: 95%;
-      border-radius: 50%;
-      transition: transform 0.4s;
-    }
-
-    .photo img:hover {
-      transform: scale(1.05);
-    }
-
-    @keyframes zoomIn {
-      from { opacity: 0; transform: scale(0.7); }
-      to { opacity: 1; transform: scale(1); }
-    }
+    .photo img { width: 95%; border-radius: 50%; transition: transform 0.4s; }
+    .photo img:hover { transform: scale(1.05); }
 
     /* ====== ABOUT ====== */
     .about {
-      margin-top: 60px;
-      width: 80%;
-      max-width: 900px;
-      padding: 40px;
-      background: rgba(255,255,255,0.25);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      animation: fadeSlideUp 1s ease forwards;
-      opacity: 0;
-      transform: translateY(40px);
-      display: flex;
-      align-items: center;
-      gap: 30px;
+      margin-top: 60px; width: 80%; max-width: 900px; padding: 40px;
+      background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
+      border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
     }
-
     .about img {
-      width: 250px;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      border: 3px solid transparent; /* border default */
-      transition: border 0.3s;
+      width: 230px; border-radius: 15px; box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      border: 3px solid transparent;
     }
+    .about-text { flex: 1; min-width: 250px; }
+    .about-text h2 { text-align: center; margin-bottom: 15px; color: #2c3e50; font-size: 2rem; }
+    .about-text p { text-align: left; color: #333; line-height: 1.7; font-size: 1rem; }
 
-    .about-text {
-      flex: 1;
-    }
-
-    .about-text h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      color: #2c3e50;
-      font-size: 2rem;
-    }
-
-    .about-text p {
-      text-align: left;
-      color: #333;
-      line-height: 1.7;
-      font-size: 1.1rem;
-    }
-
-    /* ====== FORM KONTAK ====== */
+    /* ====== CONTACT ====== */
     .contact {
-      margin-top: 60px;
-      width: 80%;
-      max-width: 600px;
-      padding: 30px;
-      background: rgba(255,255,255,0.25);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      animation: fadeSlideUp 1s ease forwards;
-      opacity: 0;
-      transform: translateY(40px);
+      margin: 60px 0; width: 80%; max-width: 600px; padding: 30px;
+      background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
+      border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
-
-    .contact h2 {
-      margin-bottom: 15px;
-      color: #2c3e50;
-      text-align: center;
+    .contact h2 { margin-bottom: 15px; color: #2c3e50; text-align: center; }
+    .contact form input, .contact form textarea {
+      width: 100%; padding: 12px; margin-bottom: 15px;
+      border: 2px solid transparent; border-radius: 10px;
+      background: rgba(255,255,255,0.7); font-size: 1rem; outline: none;
     }
-
-    .contact form input,
-    .contact form textarea {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      outline: none;
-      background: rgba(255,255,255,0.7);
-      font-size: 1rem;
-      transition: border 0.3s;
-    }
-
     .contact form button {
-      background: #4ecb71;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.3s;
-      display: block;
-      margin: 0 auto;
+      background: #4ecb71; color: white; border: none; padding: 12px 20px;
+      border-radius: 10px; cursor: pointer; font-weight: 600;
+      display: block; margin: 0 auto;
     }
+    .contact form button:hover { background: #3aa85a; }
 
-    .contact form button:hover {
-      background: #3aa85a;
-    }
-
-    /* ====== DARK MODE BORDER BIRU ====== */
-    body.dark .photo,
-    body.dark .about img,
-    body.dark .contact form input,
-    body.dark .contact form textarea {
-      border-color: #00bfff !important;
-    }
-
-    body.dark nav h2,
-    body.dark nav ul li a,
-    body.dark .text h1,
-    body.dark .text p,
-    body.dark .about-text h2,
-    body.dark .about-text p,
-    body.dark .contact h2 {
-      color: #fff !important;
-    }
-
-    body.dark .socials a {
-      color: #00bfff;
-    }
-
-    body.dark .text h1 span,
-    body.dark .about-text h2 {
-      color: #00bfff !important;
-    }
+    /* ====== DARK MODE ====== */
+    body.dark .photo, body.dark .about img,
+    body.dark .contact form input, body.dark .contact form textarea { border-color: #00bfff; }
+    body.dark nav h2, body.dark nav ul li a,
+    body.dark .text h1, body.dark .text p,
+    body.dark .about-text h2, body.dark .about-text p,
+    body.dark .contact h2 { color: #fff !important; }
+    body.dark .socials a { color: #00bfff; }
+    body.dark .text h1 span, body.dark .about-text h2 { color: #00bfff !important; }
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
-      .container, .about {
-        flex-direction: column;
-        text-align: center;
-      }
+      nav { flex-wrap: wrap; justify-content: center; }
+      .container, .about { flex-direction: column; text-align: center; }
+      .socials { text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .text h1 { font-size: 1.6rem; }
+      .photo { width: 180px; height: 180px; }
+    }
 
-      .socials {
-        text-align: center; /* biar rapi di mobile */
-      }
+    /* ====== ANIMASI SCROLL ====== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -343,9 +149,7 @@
   <!-- NAVBAR -->
   <nav>
     <h2>Dashboard Saya</h2>
-    <div class="toggle-mode">
-      <button class="toggle-btn" onclick="toggleMode()">🌙</button>
-    </div>
+    <div class="toggle-mode"><button class="toggle-btn" onclick="toggleMode()">🌙</button></div>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">Tentang</a></li>
@@ -354,39 +158,32 @@
   </nav>
 
   <!-- HERO -->
-  <div class="container" id="home">
+  <div class="container reveal" id="home">
     <div class="text">
       <h1>Hi, Saya <span>M. Hafidz Falih Ramadhan</span></h1>
       <p>Mahasiswa Rekam Medis dan Informasi Kesehatan <br> Politeknik Kesehatan Tasikmalaya</p>
       <div class="socials">
-        <a href="https://www.instagram.com/hafidzfalih_?igsh=NG80aDQxNHc0NWVn" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@falllyourbae?_t=ZS-8zdW53QeMEC&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/hafidzfalih_" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@falllyourbae" target="_blank"><i class="fab fa-tiktok"></i></a>
         <a href="https://www.youtube.com/@hafidzfalih" target="_blank"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
-    <div class="photo">
-      <img src="fotomu.jpg" alt="Foto Profil">
-    </div>
+    <div class="photo"><img src="fotomu.jpg" alt="Foto Profil"></div>
   </div>
 
   <!-- ABOUT -->
-  <div class="about" id="about">
+  <div class="about reveal" id="about">
     <img src="about me.jpg" alt="Foto About Me">
     <div class="about-text">
       <h2>About Me</h2>
-      <p>
-        Halo, saya <b>M. Hafidz Falih Ramadhan</b>, seorang mahasiswa Rekam Medis dan Informasi Kesehatan di Poltekkes Tasikmalaya.
-        Saya memiliki minat dalam mengeksplorasi hal-hal baru. Salah satu hal yang saya sukai adalah olahraga dan membaca buku.
-      </p>
-      <p>
-       Selain itu, saya sudah biasa bekerja secara mandiri maupun tim, saya mampu untuk menjaga komunikasi yang efektif dan
-       berkolaborasi secara selektif.
-      </p>
+      <p>Halo, saya <b>M. Hafidz Falih Ramadhan</b>, seorang mahasiswa Rekam Medis dan Informasi Kesehatan di Poltekkes Tasikmalaya.
+         Saya memiliki minat dalam mengeksplorasi hal-hal baru, terutama olahraga dan membaca buku.</p>
+      <p>Saya terbiasa bekerja secara mandiri maupun tim, mampu menjaga komunikasi efektif, dan berkolaborasi dengan baik.</p>
     </div>
   </div>
 
-  <!-- FORM KONTAK -->
-  <div class="contact" id="contact">
+  <!-- CONTACT -->
+  <div class="contact reveal" id="contact">
     <h2>Hubungi Saya</h2>
     <form action="https://formspree.io/f/xvgbljbb" method="POST">
       <input type="text" name="nama" placeholder="Nama Kamu" required>
@@ -401,9 +198,24 @@
       const body = document.body;
       body.classList.toggle('dark');
       body.classList.toggle('light');
-      const btn = document.querySelector('.toggle-btn');
-      btn.textContent = body.classList.contains('dark') ? '🌙' : '☀️';
+      document.querySelector('.toggle-btn').textContent =
+        body.classList.contains('dark') ? '🌙' : '☀️';
     }
+
+    // Animasi Scroll
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target); // animasi sekali saja
+        }
+      });
+    }, { threshold: 0.2 });
+
+    reveals.forEach((reveal) => {
+      observer.observe(reveal);
+    });
   </script>
 </body>
 </html>

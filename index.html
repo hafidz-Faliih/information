@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portofolio Saya</title>
+  <title>My Information</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -15,19 +15,34 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ====== DARK & LIGHT MODE ====== */
+    body.dark {
+      background: url("background1.png") no-repeat center center/cover;
+      color: #fff;
+    }
+
+    body.light {
+      background: url("background2.jpg") no-repeat center center/cover;
+      color: #222;
+    }
+
     body {
-      background: url("background.jpg") no-repeat center center/cover;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-x: hidden; /* cegah geser kanan */
+      overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
     }
 
     /* ====== NAVBAR ====== */
     nav {
       width: 100%;
-      padding: 15px 20px;
+      padding: 20px 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -44,17 +59,37 @@
     nav h2 {
       color: #2c3e50;
       font-weight: 700;
-      font-size: 1rem;
+    }
+
+    .toggle-mode {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .toggle-btn {
+      font-size: 1.3rem;
+      background: #4ecb71;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      transform: scale(1.1);
+      background: #3aa85a;
     }
 
     nav ul {
       display: flex;
       list-style: none;
-      flex-wrap: wrap;
     }
 
     nav ul li {
-      margin-left: 15px;
+      margin-left: 20px;
     }
 
     nav ul li a {
@@ -68,41 +103,39 @@
       color: #4ecb71;
     }
 
-    /* ====== CONTAINER ====== */
+    /* ====== CONTAINER (HOME) ====== */
     .container {
       margin-top: 120px;
       background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      width: 90%;
+      width: 80%;
       max-width: 1000px;
       border-radius: 20px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.25);
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 30px;
+      padding: 40px;
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 1s ease-in-out;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlideUp 1s ease forwards;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+    @keyframes fadeSlideUp {
       to { opacity: 1; transform: translateY(0); }
     }
 
     .text {
       flex: 1;
-      min-width: 250px;
-      padding: 10px;
-      text-align: center;
+      padding-right: 30px;
     }
 
     .text h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #2c3e50;
+      animation: slideIn 1.2s ease;
     }
 
     .text h1 span {
@@ -110,39 +143,50 @@
     }
 
     .text p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       margin-top: 10px;
       color: #333;
+      animation: slideIn 1.5s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     .socials {
-      margin-top: 15px;
+      margin-top: 20px;
+      text-align: left; /* rata kiri */
+      animation: fadeSlideUp 1.3s ease forwards;
     }
 
     .socials a {
       text-decoration: none;
-      margin: 0 10px;
-      font-size: 1.5rem;
+      margin: 0 10px 0 0;
+      font-size: 1.8rem;
       color: #4ecb71;
-      transition: transform 0.3s, color 0.3s;
+      display: inline-block;
+      transition: transform 0.6s ease, color 0.3s;
     }
 
     .socials a:hover {
-      transform: scale(1.2);
+      transform: rotate(360deg) scale(1.2);
       color: #ffe066;
     }
 
     .photo {
-      width: 220px;
-      height: 220px;
+      width: 280px;
+      height: 280px;
       border-radius: 50%;
       background: rgba(78,203,113,0.8);
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      margin: 20px auto;
+      animation: zoomIn 1s ease-in-out;
       box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+      border: 3px solid transparent; /* border default */
+      transition: border 0.3s;
     }
 
     .photo img {
@@ -155,40 +199,68 @@
       transform: scale(1.05);
     }
 
-    /* dekorasi lingkaran transparan */
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(78,203,113,0.15);
-      animation: float 6s ease-in-out infinite;
-      z-index: -1;
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    .circle.one {
-      width: 100px; height: 100px;
-      top: 20px; right: 20px;
+    /* ====== ABOUT ====== */
+    .about {
+      margin-top: 60px;
+      width: 80%;
+      max-width: 900px;
+      padding: 40px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeSlideUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
+      display: flex;
+      align-items: center;
+      gap: 30px;
     }
 
-    .circle.two {
-      width: 80px; height: 80px;
-      bottom: 20px; left: 20px;
+    .about img {
+      width: 250px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      border: 3px solid transparent; /* border default */
+      transition: border 0.3s;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #2c3e50;
+      font-size: 2rem;
+    }
+
+    .about-text p {
+      text-align: left;
+      color: #333;
+      line-height: 1.7;
+      font-size: 1.1rem;
     }
 
     /* ====== FORM KONTAK ====== */
     .contact {
-      margin: 40px auto;
-      width: 90%;
+      margin-top: 60px;
+      width: 80%;
       max-width: 600px;
-      padding: 20px;
+      padding: 30px;
       background: rgba(255,255,255,0.25);
       backdrop-filter: blur(10px);
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeSlideUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
     }
 
     .contact h2 {
@@ -201,12 +273,13 @@
     .contact form textarea {
       width: 100%;
       padding: 12px;
-      margin-bottom: 12px;
-      border: none;
+      margin-bottom: 15px;
+      border: 2px solid transparent;
       border-radius: 10px;
       outline: none;
       background: rgba(255,255,255,0.7);
       font-size: 1rem;
+      transition: border 0.3s;
     }
 
     .contact form button {
@@ -218,18 +291,61 @@
       cursor: pointer;
       font-weight: 600;
       transition: 0.3s;
-      width: 100%;
+      display: block;
+      margin: 0 auto;
     }
 
     .contact form button:hover {
       background: #3aa85a;
     }
+
+    /* ====== DARK MODE BORDER BIRU ====== */
+    body.dark .photo,
+    body.dark .about img,
+    body.dark .contact form input,
+    body.dark .contact form textarea {
+      border-color: #00bfff !important;
+    }
+
+    body.dark nav h2,
+    body.dark nav ul li a,
+    body.dark .text h1,
+    body.dark .text p,
+    body.dark .about-text h2,
+    body.dark .about-text p,
+    body.dark .contact h2 {
+      color: #fff !important;
+    }
+
+    body.dark .socials a {
+      color: #00bfff;
+    }
+
+    body.dark .text h1 span,
+    body.dark .about-text h2 {
+      color: #00bfff !important;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      .container, .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .socials {
+        text-align: center; /* biar rapi di mobile */
+      }
+    }
   </style>
 </head>
-<body>
+<body class="dark">
   <!-- NAVBAR -->
   <nav>
-    <h2>Hi, selamat datang di dashboard saya</h2>
+    <h2>Dashboard Saya</h2>
+    <div class="toggle-mode">
+      <button class="toggle-btn" onclick="toggleMode()">🌙</button>
+    </div>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">Tentang</a></li>
@@ -241,18 +357,32 @@
   <div class="container" id="home">
     <div class="text">
       <h1>Hi, Saya <span>M. Hafidz Falih Ramadhan</span></h1>
-      <p>Mahasiswa Rekam medis dan informasi kesehatan <br> Politeknik kesehatan Tasikmalaya</p>
+      <p>Mahasiswa Rekam Medis dan Informasi Kesehatan <br> Politeknik Kesehatan Tasikmalaya</p>
       <div class="socials">
         <a href="https://www.instagram.com/hafidzfalih_?igsh=NG80aDQxNHc0NWVn" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://www.tiktok.com/@falllyourbae?_t=ZS-8zdW53QeMEC&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
-         <a href="https://www.youtube.com/@hafidzfalih" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.youtube.com/@hafidzfalih" target="_blank"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
     <div class="photo">
       <img src="fotomu.jpg" alt="Foto Profil">
     </div>
-    <div class="circle one"></div>
-    <div class="circle two"></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about" id="about">
+    <img src="about me.jpg" alt="Foto About Me">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>
+        Halo, saya <b>M. Hafidz Falih Ramadhan</b>, seorang mahasiswa Rekam Medis dan Informasi Kesehatan di Poltekkes Tasikmalaya.
+        Saya memiliki minat dalam mengeksplorasi hal-hal baru. Salah satu hal yang saya sukai adalah olahraga dan membaca buku.
+      </p>
+      <p>
+       Selain itu, saya sudah biasa bekerja secara mandiri maupun tim, saya mampu untuk menjaga komunikasi yang efektif dan
+       berkolaborasi secara selektif.
+      </p>
+    </div>
   </div>
 
   <!-- FORM KONTAK -->
@@ -265,5 +395,15 @@
       <button type="submit">Kirim Pesan</button>
     </form>
   </div>
+
+  <script>
+    function toggleMode() {
+      const body = document.body;
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
+      const btn = document.querySelector('.toggle-btn');
+      btn.textContent = body.classList.contains('dark') ? '🌙' : '☀️';
+    }
+  </script>
 </body>
 </html>

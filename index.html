@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Information</title>
+  <title>Hafid Falih | Portofolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -23,36 +23,58 @@
       transition: all 0.5s ease;
     }
     body {
-      min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       overflow-x: hidden;
     }
 
     /* ====== NAVBAR ====== */
     nav {
-      width: 100%; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center;
-      position: fixed; top: 0; left: 0;
-      background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
-      z-index: 1000; border-radius: 0 0 15px 15px;
+      width: 100%;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0; left: 0;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-radius: 0 0 15px 15px;
     }
-    nav h2 { color: #2c3e50; font-weight: 700; }
-    .toggle-mode { flex: 1; display: flex; justify-content: center; }
+    nav .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    nav ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2c3e50;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover { color: #4ecb71; }
+
+    /* ====== Toggle Button ====== */
     .toggle-btn {
-      font-size: 1rem;                /* ✅ lebih kecil */
-      background: #4ecb71; 
-      color: #fff; 
-      border: none; 
-      padding: 6px 10px;              /* ✅ lebih ramping */
-      border-radius: 25px; 
-      cursor: pointer; 
+      font-size: 1rem;       /* ✅ lebih kecil */
+      background: #4ecb71;
+      color: #fff;
+      border: none;
+      padding: 6px 10px;     /* ✅ lebih ramping */
+      border-radius: 25px;
+      cursor: pointer;
       transition: transform 0.3s, background 0.3s;
     }
     .toggle-btn:hover { transform: scale(1.1); background: #3aa85a; }
-    nav ul { display: flex; list-style: none; }
-    nav ul li { margin-left: 20px; }
-    nav ul li a {
-      text-decoration: none; font-weight: 600; color: #2c3e50; transition: color 0.3s;
-    }
-    nav ul li a:hover { color: #4ecb71; }
 
     /* ====== CONTAINER (HOME) ====== */
     .container {
@@ -61,7 +83,8 @@
       background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
       border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.25);
       display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
-      padding: 40px; animation: fadeSlideUp 1s ease forwards;
+      padding: 40px;
+      animation: fadeSlideUp 1s ease forwards;
     }
     @keyframes fadeSlideUp { from {opacity:0; transform:translateY(50px);} to { opacity:1; transform: translateY(0); } }
 
@@ -119,10 +142,10 @@
     }
     .contact form button:hover { background: #3aa85a; }
 
-    /* ====== DARK MODE ====== */
+    /* ====== DARK MODE STYLES ====== */
     body.dark .photo, body.dark .about img,
     body.dark .contact form input, body.dark .contact form textarea { border-color: #00bfff; }
-    body.dark nav h2, body.dark nav ul li a,
+    body.dark nav .logo, body.dark nav ul li a,
     body.dark .text h1, body.dark .text p,
     body.dark .about-text h2, body.dark .about-text p,
     body.dark .contact h2 { color: #fff !important; }
@@ -131,31 +154,27 @@
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
-      nav { 
-        flex-direction: column; 
-        padding: 12px 15px;            /* ✅ lebih lega di HP */
+      nav {
+        flex-direction: column;
+        padding: 12px 15px;   /* ✅ lebih lega di HP */
       }
-      nav h2 { margin-bottom: 6px; font-size: 1.1rem; }
+      nav .logo { margin-bottom: 6px; font-size: 1.1rem; }
       nav ul { margin-top: 4px; flex-wrap: wrap; justify-content: center; }
-      nav ul li { margin: 4px 8px; }
       nav ul li a { font-size: 0.9rem; }
-
       .container, .about { flex-direction: column; text-align: center; padding: 20px; }
       .text h1 { font-size: 1.5rem; }
       .text p { font-size: 0.9rem; }
       .socials { justify-content: center; margin-top: 12px; }
-      .socials a { font-size: 1.3rem; }
       .photo { width: 180px; height: 180px; margin-top: 15px; }
     }
 
     @media (max-width: 480px) {
-      nav h2 { font-size: 1rem; }
+      nav .logo { font-size: 1rem; }
       nav ul li a { font-size: 0.85rem; }
       .toggle-btn {
-        font-size: 0.9rem;             /* ✅ lebih kecil lagi di HP */
+        font-size: 0.9rem;
         padding: 5px 8px;
       }
-
       .text h1 { font-size: 1.2rem; line-height: 1.4; }
       .text p { font-size: 0.8rem; }
       .socials a { font-size: 1.1rem; }
@@ -166,12 +185,12 @@
 <body class="dark">
   <!-- NAVBAR -->
   <nav>
-    <h2>Dashboard Saya</h2>
-    <div class="toggle-mode"><button class="toggle-btn" onclick="toggleMode()">🌙</button></div>
+    <div class="logo">Dasboard Saya</div>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">Tentang</a></li>
       <li><a href="#contact">Kontak</a></li>
+      <li><button class="toggle-btn" onclick="toggleMode()">🌙</button></li>
     </ul>
   </nav>
 

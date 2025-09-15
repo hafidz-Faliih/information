@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hafid Falih | Portofolio</title>
+  <title>Hafidz Falih | Portofolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -65,48 +65,39 @@
 
     /* ====== Toggle Button ====== */
     .toggle-btn {
-      font-size: 1rem;       /* ✅ lebih kecil */
+      font-size: 1rem;
       background: #4ecb71;
       color: #fff;
       border: none;
-      padding: 6px 10px;     /* ✅ lebih ramping */
+      padding: 6px 10px;
       border-radius: 25px;
       cursor: pointer;
       transition: transform 0.3s, background 0.3s;
     }
     .toggle-btn:hover { transform: scale(1.1); background: #3aa85a; }
 
-    /* ====== CONTAINER (HOME) ====== */
+    /* ====== HERO ====== */
     .container {
       margin-top: 120px;
       width: 80%; max-width: 1000px;
       background: rgba(255,255,255,0.25); backdrop-filter: blur(10px);
       border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-      display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
-      padding: 40px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
       animation: fadeSlideUp 1s ease forwards;
     }
     @keyframes fadeSlideUp { from {opacity:0; transform:translateY(50px);} to { opacity:1; transform: translateY(0); } }
 
-    .text { flex: 1; min-width: 250px; }
     .text h1 { font-size: 2.2rem; color: #2c3e50; }
     .text h1 span { color: #4ecb71; }
     .text p { font-size: 1rem; margin-top: 10px; color: #333; }
-    .socials { margin-top: 20px; display:flex; gap:15px; }
+    .socials { margin-top: 20px; display:flex; justify-content: center; gap:15px; }
     .socials a {
       font-size: 1.6rem; color: #4ecb71;
       transition: transform 0.6s ease, color 0.3s;
     }
     .socials a:hover { transform: rotate(360deg) scale(1.2); color: #ffe066; }
-
-    .photo {
-      width: 260px; height: 260px; border-radius: 50%;
-      background: rgba(78,203,113,0.8); display: flex; justify-content: center; align-items: center;
-      overflow: hidden; box-shadow: 0 8px 15px rgba(0,0,0,0.25);
-      border: 3px solid transparent;
-    }
-    .photo img { width: 95%; border-radius: 50%; transition: transform 0.4s; }
-    .photo img:hover { transform: scale(1.05); }
 
     /* ====== ABOUT ====== */
     .about {
@@ -143,8 +134,6 @@
     .contact form button:hover { background: #3aa85a; }
 
     /* ====== DARK MODE STYLES ====== */
-    body.dark .photo, body.dark .about img,
-    body.dark .contact form input, body.dark .contact form textarea { border-color: #00bfff; }
     body.dark nav .logo, body.dark nav ul li a,
     body.dark .text h1, body.dark .text p,
     body.dark .about-text h2, body.dark .about-text p,
@@ -154,31 +143,23 @@
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        padding: 12px 15px;   /* ✅ lebih lega di HP */
-      }
+      nav { flex-direction: column; padding: 12px 15px; }
       nav .logo { margin-bottom: 6px; font-size: 1.1rem; }
       nav ul { margin-top: 4px; flex-wrap: wrap; justify-content: center; }
       nav ul li a { font-size: 0.9rem; }
-      .container, .about { flex-direction: column; text-align: center; padding: 20px; }
+      .container { padding: 30px 20px; }
       .text h1 { font-size: 1.5rem; }
       .text p { font-size: 0.9rem; }
-      .socials { justify-content: center; margin-top: 12px; }
-      .photo { width: 180px; height: 180px; margin-top: 15px; }
+      .socials { margin-top: 12px; }
     }
 
     @media (max-width: 480px) {
       nav .logo { font-size: 1rem; }
       nav ul li a { font-size: 0.85rem; }
-      .toggle-btn {
-        font-size: 0.9rem;
-        padding: 5px 8px;
-      }
+      .toggle-btn { font-size: 0.9rem; padding: 5px 8px; }
       .text h1 { font-size: 1.2rem; line-height: 1.4; }
       .text p { font-size: 0.8rem; }
       .socials a { font-size: 1.1rem; }
-      .photo { width: 150px; height: 150px; }
     }
   </style>
 </head>
@@ -205,7 +186,6 @@
         <a href="https://www.youtube.com/@hafidzfalih" target="_blank"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
-    <div class="photo"><img src="fotomu.jpg" alt="Foto Profil"></div>
   </div>
 
   <!-- ABOUT -->
